@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Client Side</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <script>
+        function calcular(id1, id2, id3){            
+           
+            n1 = document.getElementById(id1).value;
+            n2 = document.getElementById(id2).value;
+            
+            result = n1 * n2;
+            var Total = document.getElementById('n1').value * document.getElementById('n2').value;
+            console.log(n2);
+            document.getElementById(id3).innerHTML = result;
+        }
+    </script>
+</head>
+<body onload="">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="topnav">
+                <a href="index.html">Home</a>
+                <a href="lanches.html" class="active">Lanches</a>
+                <a href="monte.html">Monte o seu</a>
+                <a href="carrinho.html">Carrinho</a>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <header class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="img/logo.png"  class="img-thumbnail" alt="BURGUER SAMMER" width="128" height="128"/>
+                </div>
+                <div class="col-sm-8" align="center">
+                    <h2>BURGUER SAMMER</h2>
+                    <p>O melhor lanche da cidade, peça já o seu.</p>
+                </div>        
+            </div>
+        </div>
+    </header>
+        
+       
+    <main class="container" align="left">
+            <h2>Detalhes</h2>
+            <input type="hidden" value="3.00" id="n1">
+            <input type="number" id="n2" value="1" onchange="calcular('n1', 'n2','total')">
+            <div id="total"></div>
+    <main/>
+    
+    <hr />
+    
+    <footer class="container">
+        <p align="center">&copy; 2018 - Samir M Teixeira</p>
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/lanche.js"></script>
+    </footer>
+
+</body>
+</html>

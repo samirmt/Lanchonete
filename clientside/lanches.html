@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Client Side</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <script>
+        function AddCarrinho(produto, qtd, valor, posicao) {
+            var prod = "produto" + posicao + "";
+            var varQtd = "qtd" + posicao;
+            
+            var p = localStorage.getItem(prod);
+                        
+            if(localStorage.getItem(prod) != null){
+               var q = localStorage.getItem(varQtd);
+                
+               varQtd = parseInt(qtd) + parseInt(q);
+                
+            }else{
+                varQtd = qtd;
+            }          
+
+            localStorage.setItem("produto" + posicao, produto);
+            localStorage.setItem("qtd" + posicao, varQtd);
+            localStorage.setItem("valor" + posicao, valor);
+            total = valor * varQtd;
+            localStorage.setItem("total" + posicao, total);
+            alert("Lanche adicionado ao carrinho!");
+        }
+    </script>
+</head>
+<body onload="getLanches()">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="topnav">
+                <a href="index.html">Home</a>
+                <a href="lanches.html" class="active">Lanches</a>
+                <a href="monte.html">Monte o seu</a>
+                <a href="carrinho.html">Carrinho</a>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <header class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="img/logo.png"  class="img-thumbnail" alt="BURGUER SAMMER" width="128" height="128"/>
+                </div>
+                <div class="col-sm-8" align="center">
+                    <h2>BURGUER SAMMER</h2>
+                    <p>O melhor lanche da cidade, peça já o seu.</p>
+                </div>        
+            </div>
+        </div>
+    </header>
+        
+       
+    <main class="container" align="left">
+            <h2>Lanches</h2>
+            <hr/>
+            <div id="showLanches" align="center"></div>  
+    <main/>
+    
+    <hr />
+    
+    <footer class="container">
+        <p align="center">&copy; 2018 - Samir M Teixeira</p>
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/lanche.js"></script>
+        <script type="text/javascript" src="js/carrinho.js"></script>
+        <script type="text/javascript" src="js/montaLanche.js"></script>
+    </footer>
+
+</body>
+</html>

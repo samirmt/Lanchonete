@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Client Side</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+    <script>
+        function calcular(chaveValor, chaveQtd, chaveTotal, idQtd, posicao){  
+            vl = parseFloat(localStorage.getItem(chaveValor));
+            qtd = document.getElementById(idQtd).value;  
+            
+            result = (vl * qtd);
+
+            localStorage.setItem(chaveQtd, qtd);
+            localStorage.setItem("ingtotal" + posicao, result);  
+            location.reload();
+        }
+
+        function carregaDados(){
+            var val = localStorage.getItem("ingval1");
+            if(val > 0){
+                carregaIngredientes();
+            }else{
+                getIngredientes();
+            }
+        }
+
+        function AddCarrinho(produto, qtd, posicao, tDesconto) {
+            valor = tDesconto;
+            totalDesconto = (parseFloat(tDesconto) * parseInt(qtd));
+            totalDesconto = totalDesconto.toFixed(2);
+                        
+            localStorage.setItem("produto" + posicao, produto);
+            localStorage.setItem("qtd" + posicao, qtd);
+            localStorage.setItem("valor" + posicao, valor);           
+            localStorage.setItem("total" + posicao, totalDesconto);
+                        
+            alert("Lanche adicionado ao carrinho!");   
+        }
+        
+    </script>
+</head>
+<body onload="carregaDados()">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="topnav">
+                <a href="index.html">Home</a>
+                <a href="lanches.html">Lanches</a>
+                <a href="monte.html" class="active">Monte o seu</a>
+                <a href="carrinho.html">Carrinho</a>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <header class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="img/logo.png"  class="img-thumbnail" alt="BURGUER SAMMER" width="128" height="128"/>
+                </div>
+                <div class="col-sm-8" align="center">
+                    <h2>BURGUER SAMMER</h2>
+                    <p>O melhor lanche da cidade, peça já o seu.</p>
+                </div>        
+            </div>
+        </div>
+    </header>        
+       
+    <main class="container">
+            <h2>Monte o seu Lanches</h2>
+            <hr/>
+            <h4><span style="color:black">Atenção a formação de preco:</span></h4>
+            <hr/>
+            <p><span style="color:green">Light: </span> Se o lanche tem alface e não tem bacon, ganha 10% de desconto.</p>
+            <p><span style="color:orange">Muita Carne: </span> A cada 3 porçoes de carne, o cliente só paga 2.</p>
+            <p><span style="color:red">Muito Queijo: </span> A cada 3 porçoes de queijo o cliente so paga 2.</p>
+            <hr/>
+            <h4>Escolha seus ingredientes:</h4>
+            <div id="showIngredientes"></div>           
+            <div>
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade">
+                <div id="totalGeral" align="right"></div> 
+            </div>
+            <br>
+            <div class="promocao">
+                    <table class="rwd-table">
+                            <tr>                              
+                                <td>Descontos</td>
+                            </tr>
+                            <tr>
+                                <td>Light</td>
+                                <td id="descontoLight">0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Muita Carne</td>
+                                <td id="descontoMuitaCarne">0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Muita Queijo</td>
+                                <td id="descontoMuitoQueijo">0.00</td>
+                            </tr>
+                            <tr><td colspan="2">------------------------------------------</td></tr>
+                            <tr>    
+                                    <td id="tituloTotal">Total a Pagar:</td>
+                                    <td id="totalComDescontos"></td>
+                                </tr>
+                          </table>
+                          
+            </div>
+            <div id="botaoComprar"></div>
+    </main>
+    
+    <hr />
+
+    <footer class="container">
+        <p align="center">&copy; 2018 - Samir M Teixeira</p>
+        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/lanche.js"></script>
+        <script type="text/javascript" src="js/carrinho.js"></script>
+        <script type="text/javascript" src="js/montaLanche.js"></script>
+        <script type="text/javascript" src="js/regras.js"></script>
+        
+    </footer>
+
+</body>
+</html>
